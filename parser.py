@@ -3,16 +3,14 @@ import mplfinance as mpf
 
 def stock_info(id):
     tick = yf.Ticker(id)
-    info = tick.info
-    print(f'公司名稱 {info.get("shortName")}')
-    print(f'最新訊息 {info.get("message")}')
-    print(f'今日市場均價 {info.get("regularMarketPrice")}')
-    print(f'今年度EPS {info.get("priceEpsCurrentYear")}')
-    print(f'今日行情 {info.get("regularMarketDayRange")}')
+    info = tick.fast_info
+    print(f'最高價 {info.get("dayHigh")}')
+    print(f'最低價 {info.get("dayLow")}')
+    print(f'最新價 {info.get("lastPrice")}')
+    print(f'開盤價 {info.get("open")}')
+    print(f'前一日收盤價 {info.get("previousClose")}')
 
-
-
-
-#抓取台積電資訊
 stock_info("2330.TW")
 stock_info("2345.TW")
+
+import yfinance as yf; tick = yf.Ticker('2330.TW'); print(dir(tick.fast_info))
